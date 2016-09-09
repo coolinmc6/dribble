@@ -23,3 +23,39 @@ def find_post
 	@post = Post.find(params[:id])
 end
 ```
+#### ~23:12
+* by this time, nothing that we've done thus far is that groundbreaking.  We are creating the actions and the views
+and I have now (after 12 apps!) gotten a good handle on the basic rhythm of creating the foundation for the app. 
+* We are now going to add Users
+#### ~26:30
+* We have completed the Devise set-up (added Users) but now we need to set it up so that all new posts are attached to
+a user.
+* To start, we create a migration to add a user_id column to posts
+```shell
+rails g migration add_user_id_to_post user_id:integer
+```
+* Double check the migration file before rails db:migrate
+* complete the association by adding the necessary code to each model
+* Take a look at the new 'new' and 'create' actions. How do they stack up to what is in Michael Hartl's Rails Tutorial?
+```ruby
+def new
+	@post = current_user.posts.build
+end
+
+def create
+	@post = current_user.posts.build(post_params)
+
+	if @post.save
+		redirect_to @post
+	else
+		render 'new'
+	end
+end
+```
+* User authentication:
+```ruby
+before_action :authenticate_user!, except: [:show, :index]
+```
+
+
+
