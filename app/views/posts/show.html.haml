@@ -1,4 +1,5 @@
 / show.html.haml
+= image_tag @post.image.url(:medium)
 %h1= @post.title
 %p= @post.link
 %p= @post.description

@@ -1,6 +1,6 @@
 # README
 
-This is a Pinterest-clone following the tutorial by [Mackenzie Child](https://mackenziechild.me/) in his
+This is a Dribble-clone following the tutorial by [Mackenzie Child](https://mackenziechild.me/) in his
 [12-apps-in-12-weeks](https://mackenziechild.me/12-in-12/) series.  
 * The video for the tutorial is located here: [Week 12: How To Build A Dribble Type App With Rails 4](https://mackenziechild.me/12-in-12/12/)
 * Mackenzie's GitHub repo for this project is here: [muse](https://github.com/mackenziechild/muse)
@@ -80,6 +80,12 @@ def configure_permitted_parameters
   devise_parameter_sanitizer.permit(:account_update, keys: [:name])
 end
 ```
-
+* I am having trouble adding Paperclip.  It won't let me upload an image.
+  * Okay, found it...see the difference??
+```ruby
+has_attached_file :image, styles: { medium: "300x300#>", thumb: "100x100#>" } # my post.rb file
+has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" } # example model file
+```
+* I have the "#>" instead of just either "#" or ">"! 
 
 
