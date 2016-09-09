@@ -1,2 +1,5 @@
 / index.html.haml
-%h1 Placeholder for index ;)
+- @posts.each do |post|
+	%h2= link_to post.title, post
+
+%button= link_to "New Inspiration", new_post_path

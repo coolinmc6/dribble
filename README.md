@@ -12,4 +12,14 @@ This is a Pinterest-clone following the tutorial by [Mackenzie Child](https://ma
 rails g model Post title link description:text
 rails db:migrate
 ```
-* maybe try adding each action and view at a time
+* maybe try adding each action and view at a time...let the errors guide what you develop next?
+* I have to make a flash card or something to just remember this:
+```ruby
+def post_params
+	params.require(:post).permit(:title, :link, :description)
+end
+
+def find_post
+	@post = Post.find(params[:id])
+end
+```
