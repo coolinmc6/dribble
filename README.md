@@ -56,6 +56,18 @@ end
 ```ruby
 before_action :authenticate_user!, except: [:show, :index]
 ```
+* Now, we want to modify the User model so that there is a name field:
+```shell
+rails g migration add_name_to_user name:string
+```
+* I made a minor mistake, hopefully I was able to reverse it:
+```shell
+rails g devise views
+```
+  * ths above is wrong; I wanted 'rails g devise:views'.  This is how I reversed it:
+```shell
+rails destroy devise views
+```
 
 
 
