@@ -105,4 +105,5 @@ end
   * Several times, I have closed the create parens "create()" too early.  
   * In the ENTIRE create parens, it has: "params[:content].permit(:content)".
 
-
+#### ~53:30
+* Finish adding comments

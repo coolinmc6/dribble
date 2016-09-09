@@ -6,5 +6,10 @@
 	Number of Comments: 
 	=post.comments.count
 	%br
+	%p
+		= post.get_upvotes.size
+		Likes | 
+		= post.get_downvotes.size
+		Dislikes
 
 %button= link_to "New Inspiration", new_post_path
