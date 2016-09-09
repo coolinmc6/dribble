@@ -87,5 +87,22 @@ has_attached_file :image, styles: { medium: "300x300#>", thumb: "100x100#>" } # 
 has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" } # example model file
 ```
 * I have the "#>" instead of just either "#" or ">"! 
+* Look at the create action in the comments_controller.rb file:
+```ruby
+def create
+	@post = Post.find(params[:post_id])
+	@comment = Comment.create(params[:comment].permit(:content))
+	@comment.user_id = current_user.id
+	@comment.post_id = @post.id
+
+	if @comment.save
+		redirect_to post_path(@post)
+	else
+		render 'new'
+	end
+end
+```
+  * Several times, I have closed the create parens "create()" too early.  
+  * In the ENTIRE create parens, it has: "params[:content].permit(:content)".
 
 
